@@ -289,6 +289,7 @@ namespace MyAppWPF
                 excelcells.Font.Size = 14;
                 excelcells.NumberFormat = "0.00";
                 xlWorkSheet.Cells[4 + i, 6] = Math.Round(Convert.ToDouble(order.Clients.DebtS), 2);
+                excelcells.EntireColumn.AutoFit();
             }
 
             //Получаем набор ссылок на объекты Workbook (на созданные книги)
