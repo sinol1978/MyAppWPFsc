@@ -1,0 +1,71 @@
+﻿<Window x:Class="MyAppWPF.WorkWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        Title="WorkWindow" Height="500" Width="550" WindowStyle="None" AllowsTransparency="True" Background="Transparent" MouseDown="Window_MouseDown">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Border Width="auto" Height="auto" BorderBrush="Black" BorderThickness="2" CornerRadius="20,20,20,20" Background="Wheat"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="tblockUser" Width="300" Padding="5" FontFamily="Arial" FontSize="18" FontWeight="Bold" FontStyle="Italic" VerticalAlignment="Bottom" MouseMove="tblockUser_MouseMove"/>
+                <Label x:Name="lblDate" HorizontalContentAlignment="Right" Width="225" Margin="20,0,0,0" FontFamily="Arial" FontSize="18" FontWeight="Bold" FontStyle="Italic" VerticalAlignment="Bottom"/>
+            </StackPanel>
+            <Grid Grid.Row="1" Background="SkyBlue">
+                <Border BorderBrush="Black" BorderThickness="2">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Width="250" Height="50" Margin="10" MouseMove="Border_MouseMove" MouseLeave="Border_MouseLeave">
+                            <Button x:Name="btnNewOrder" Content="Новый заказ" FontFamily="Arial" FontSize="18" FontWeight="Bold" Background="Wheat" Click="btnNewOrder_Click"
+                                    MouseMove="btnNewOrder_MouseMove" MouseLeave="btnNewOrder_MouseLeave"/>
+                        </Border>
+                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Width="250" Height="50" Margin="10" MouseMove="Border_MouseMove" MouseLeave="Border_MouseLeave">
+                            <Button x:Name="btnProducts"  Click="btnProducts_Click" Content="Товары" FontFamily="Arial" FontSize="18" FontWeight="Bold" Background="Wheat"
+                                     MouseMove="btnNewOrder_MouseMove" MouseLeave="btnNewOrder_MouseLeave"/>
+                        </Border>
+                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Width="250" Height="50" Margin="10" MouseMove="Border_MouseMove" MouseLeave="Border_MouseLeave">
+                            <Button x:Name="btnClients" Content="Клиенты" FontFamily="Arial" FontSize="18" FontWeight="Bold" Background="Wheat" Click="btnClients_Click"
+                                     MouseMove="btnNewOrder_MouseMove" MouseLeave="btnNewOrder_MouseLeave"/>
+                        </Border>
+                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Width="250" Height="50" Margin="10" MouseMove="Border_MouseMove" MouseLeave="Border_MouseLeave">
+                            <Button x:Name="btnStat" Content="Заказы" FontFamily="Arial" FontSize="18" FontWeight="Bold" Background="Wheat" Click="btnStat_Click"
+                                     MouseMove="btnNewOrder_MouseMove" MouseLeave="btnNewOrder_MouseLeave"/>
+                        </Border>
+                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Width="250" Height="50" Margin="10" MouseMove="Border_MouseMove" MouseLeave="Border_MouseLeave">
+                            <Button x:Name="btnReturn" Content="Возврат" FontFamily="Arial" FontSize="18" FontWeight="Bold" Background="Wheat" Click="btnReturn_Click"
+                                     MouseMove="btnNewOrder_MouseMove" MouseLeave="btnNewOrder_MouseLeave"/>
+                        </Border>
+                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Width="250" Height="50" Margin="10" MouseMove="Border_MouseMove" MouseLeave="Border_MouseLeave">
+                            <Button x:Name="btnUsers" Content="Сотрудники" FontFamily="Arial" FontSize="18" FontWeight="Bold" Background="Wheat" Click="btnUsers_Click"
+                                     MouseMove="btnNewOrder_MouseMove" MouseLeave="btnNewOrder_MouseLeave"/>
+                        </Border>
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <Button x:Name="btnExit" BorderBrush="Transparent" Content="Сменить пользователя" Grid.Row="2" HorizontalAlignment="Right" FontSize="18"
+                    FontFamily="Arial" FontStyle="Italic" FontWeight="Bold" Background="Transparent"
+                    Margin="0,0,10,0" Click="btnExit_Click"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,61 @@
+﻿<Window x:Class="MyAppWPF.Registration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        Title="Registration" Height="350" Width="525" WindowStyle="None" AllowsTransparency="True" Background="Transparent" MouseDown="Window_MouseDown">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Border Width="auto" Height="auto" BorderBrush="Black" BorderThickness="2" CornerRadius="20,20,20,20" Background="Wheat"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+            </Grid.RowDefinitions>
+                <TextBlock Text="Регистрация" Margin="10,0,0,0" FontFamily="Arial" FontSize="20" FontWeight="Bold" FontStyle="Italic" VerticalAlignment="Bottom"></TextBlock>
+            <Grid Grid.Row="1" Background="SkyBlue">
+                <Border BorderBrush="Black" BorderThickness="2">
+                    <StackPanel Margin="20,5,20,5" VerticalAlignment="Center">
+                        <Label Content="Ваше имя:*" FontSize="16" FontWeight="Bold" FontStyle="Normal"/>
+                        <TextBox x:Name="txtName" FontSize="16" Width="400" HorizontalAlignment="Right" KeyDown="txtName_KeyDown" Background="Wheat" FontStyle="Italic"/>
+                        <Label Content="Телефон:*" FontSize="16" FontWeight="Bold" FontStyle="Normal"/>
+                        <TextBox x:Name="txtPhone" FontSize="16" Width="400" HorizontalAlignment="Right" KeyDown="txtName_KeyDown" Background="Wheat" FontStyle="Italic"/>
+                        <Label Content="Должность:" FontSize="16" FontWeight="Bold" FontStyle="Normal"/>
+                        <TextBox x:Name="txtDescr" FontSize="16" Width="400" HorizontalAlignment="Right" KeyDown="txtName_KeyDown" Background="Wheat" FontStyle="Italic"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <Label Content="Логин:*" FontSize="16" FontWeight="Bold" FontStyle="Normal"/>
+                            <TextBox x:Name="txtLogin" FontSize="16" Width="175" KeyDown="txtName_KeyDown" Background="Wheat" FontStyle="Italic"/>
+                            <Label Content="Пароль:*" FontSize="16" FontWeight="Bold" FontStyle="Normal"/>
+                            <TextBox x:Name="passPass" FontSize="16" Width="170" Background="Wheat" KeyDown="txtName_KeyDown" FontStyle="Italic"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                <Button x:Name="btnExit" BorderBrush="Transparent" Content="Назад" HorizontalAlignment="Right" FontSize="18"
+                    FontFamily="Arial" FontStyle="Italic" FontWeight="Bold" Background="Transparent"
+                    Margin="10,0,0,2" Click="btnClose_Click"/>
+                <Button x:Name="btnEnter" BorderBrush="Transparent" Content="Зарегистрироваться" HorizontalAlignment="Right" FontSize="18"
+                    FontFamily="Arial" FontStyle="Italic" FontWeight="Bold" Background="Transparent"
+                    Margin="250,0,0,2" Click="btnEnter_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
