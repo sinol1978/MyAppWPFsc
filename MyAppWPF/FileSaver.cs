@@ -168,15 +168,8 @@ namespace MyAppWPF
         }
         public static void SaveExcelFile(Order order, string filename)
         {
-            string orderName;
-            if (Convert.ToDouble(order.TotalS) < 0)
-            {
-                orderName = "Возврат ";
-            }
-            else
-            {
-                orderName = "Заказ ";
-            }
+            string orderName = "Накладная от ";
+            
             string fileName = filename;
             excelApp = new Excel.Application();
             excelApp.Visible = false;
@@ -192,7 +185,6 @@ namespace MyAppWPF
             //Выбираем ячейку для вывода 
             var excelcells = xlWorkSheet.get_Range("A1", "F1");//Дата заказа
             excelcells.Merge(Type.Missing);
-            excelcells.Font.Bold = true;
             excelcells.HorizontalAlignment = Excel.Constants.xlCenter;
             excelcells.Font.Size = 14;
             xlWorkSheet.Cells[1, 1] = orderName + order.OrderDate.ToShortDateString();
@@ -237,16 +229,17 @@ namespace MyAppWPF
             string cellName2 = ("E" + (3 + i)).ToString();
             excelcells = xlWorkSheet.get_Range(cellName1, cellName2);
             excelcells.Merge(Type.Missing);
-            excelcells.Font.Bold = true;
             excelcells.HorizontalAlignment = Excel.Constants.xlRight;
+            excelcells.Font.Size = 14;
             xlWorkSheet.Cells[3 + i, 1] = "Итого:";
 
             //Итоговая Сумма
             string cellName3 = ("F" + (3 + i)).ToString();
             excelcells = xlWorkSheet.get_Range(cellName3);
-            excelcells.Font.Bold = true;
+            excelcells.Font.Size = 14;
             excelcells.NumberFormat = "0.00";
             xlWorkSheet.Cells[3 + i, 6] = Math.Round(Convert.ToDouble(order.TotalS), 2);
+            excelcells.EntireColumn.AutoFit();
 
             if (Convert.ToDouble(order.PaymentS) != 0)
             {
@@ -254,29 +247,32 @@ namespace MyAppWPF
                 cellName2 = ("E" + (4 + i)).ToString();
                 excelcells = xlWorkSheet.get_Range(cellName1, cellName2);
                 excelcells.Merge(Type.Missing);
-                excelcells.Font.Bold = true;
+                excelcells.Font.Size = 14;
                 excelcells.HorizontalAlignment = Excel.Constants.xlRight;
                 xlWorkSheet.Cells[4 + i, 1] = "Оплачено:";
 
                 cellName3 = ("F" + (4 + i)).ToString();
                 excelcells = xlWorkSheet.get_Range(cellName3);
-                excelcells.Font.Bold = true;
+                excelcells.Font.Size = 14;
                 excelcells.NumberFormat = "0.00";
                 xlWorkSheet.Cells[4 + i, 6] = Math.Round(Convert.ToDouble(order.PaymentS), 2);
+                excelcells.EntireColumn.AutoFit();
+
 
                 cellName1 = ("A" + (5 + i)).ToString();
                 cellName2 = ("E" + (5 + i)).ToString();
                 excelcells = xlWorkSheet.get_Range(cellName1, cellName2);
                 excelcells.Merge(Type.Missing);
-                excelcells.Font.Bold = true;
+                excelcells.Font.Size = 14;
                 excelcells.HorizontalAlignment = Excel.Constants.xlRight;
                 xlWorkSheet.Cells[5 + i, 1] = "Общий долг:";
 
                 cellName3 = ("F" + (5 + i)).ToString();
                 excelcells = xlWorkSheet.get_Range(cellName3);
-                excelcells.Font.Bold = true;
+                excelcells.Font.Size = 14;
                 excelcells.NumberFormat = "0.00";
                 xlWorkSheet.Cells[5 + i, 6] = Math.Round(Convert.ToDouble(order.Clients.DebtS), 2);
+                excelcells.EntireColumn.AutoFit();
             }
             else
             {
@@ -284,13 +280,13 @@ namespace MyAppWPF
                 cellName2 = ("E" + (4 + i)).ToString();
                 excelcells = xlWorkSheet.get_Range(cellName1, cellName2);
                 excelcells.Merge(Type.Missing);
-                excelcells.Font.Bold = true;
+                excelcells.Font.Size = 14;
                 excelcells.HorizontalAlignment = Excel.Constants.xlRight;
                 xlWorkSheet.Cells[4 + i, 1] = "Общий долг:";
 
                 cellName3 = ("F" + (4 + i)).ToString();
                 excelcells = xlWorkSheet.get_Range(cellName3);
-                excelcells.Font.Bold = true;
+                excelcells.Font.Size = 14;
                 excelcells.NumberFormat = "0.00";
                 xlWorkSheet.Cells[4 + i, 6] = Math.Round(Convert.ToDouble(order.Clients.DebtS), 2);
             }
