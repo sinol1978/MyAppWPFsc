@@ -4,7 +4,7 @@
         WindowStartupLocation="CenterScreen"
         Height="600" Width="750"
         WindowStyle="None" AllowsTransparency="True" Background="Transparent"
-        Closing="Window_Closing">
+        Closing="Window_Closing" MouseDown="Window_MouseDown">
     <Window.Resources>
         <Style TargetType="DataGridCell">
             <Setter Property="Background" Value="SkyBlue"/>

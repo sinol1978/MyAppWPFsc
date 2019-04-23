@@ -4,7 +4,8 @@
         xmlns:local="clr-namespace:MyAppWPF"
         WindowStartupLocation="CenterScreen"
         Height="700" Width="650"
-        WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        MouseDown="Window_MouseDown">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Template">

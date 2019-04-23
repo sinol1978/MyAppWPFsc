@@ -127,6 +127,11 @@ namespace MyAppWPF
         {
             e.Row.Header = e.Row.GetIndex() + 1;
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 
 }

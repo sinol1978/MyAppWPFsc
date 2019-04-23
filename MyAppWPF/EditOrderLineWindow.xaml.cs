@@ -98,5 +98,10 @@ namespace MyAppWPF
             Product product = (Product)e.AddedItems[0];
             this.lblUnit.Content = product.Unit;
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }

@@ -103,5 +103,10 @@ namespace MyAppWPF
             border.Background = Brushes.Wheat;
         }
         #endregion
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }

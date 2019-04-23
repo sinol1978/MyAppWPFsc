@@ -115,5 +115,10 @@ namespace MyAppWPF
                 this.Close();
             }
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }
