@@ -2,19 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
-using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MyAppWPF
 {
@@ -66,39 +59,44 @@ namespace MyAppWPF
 
         private void AddOrder()
         {
-            this.order.ClientId = (int)this.cboxClients.SelectedValue;
-            this.order.OrderDate = this.dPicker.SelectedDate.Value;
-            foreach (OrderLine ol in olines)
+            try
             {
-                OrderLine tempol = new OrderLine();
-                tempol.ProductId = ol.ProductId;
-                tempol.Quantity = ol.Quantity;
-                tempol.Price = ol.Price;
-                tempol.Total = (Convert.ToDouble(tempol.Quantity) * Convert.ToDouble(tempol.Price)).ToString();
-                sumS += Convert.ToDouble(tempol.Total);
-                sumS = Math.Round(sumS, 2);
-                this.order.OrderLines.Add(tempol);
+                this.order.ClientId = (int)this.cboxClients.SelectedValue;
+                this.order.OrderDate = this.dPicker.SelectedDate.Value;
+                foreach (OrderLine ol in olines)
+                {
+                    OrderLine tempol = new OrderLine();
+                    tempol.ProductId = ol.ProductId;
+                    tempol.Quantity = ol.Quantity;
+                    tempol.Price = ol.Price;
+                    tempol.Total = (Convert.ToDouble(tempol.Quantity) * Convert.ToDouble(tempol.Price)).ToString();
+                    sumS += Convert.ToDouble(tempol.Total);
+                    sumS = Math.Round(sumS, 2);
+                    this.order.OrderLines.Add(tempol);
+                }
+                this.order.TotalS = String.Format("{0:0.00}", sumS);
+                this.order.ManagerId = curUser.Id;
+                this.order.PaymentS = txtPayment.Text;
+                order.BalanceS = String.Format("{0:0.00}", (Math.Round(Convert.ToDouble(order.TotalS) - Convert.ToDouble(order.PaymentS), 2)));
+                _entities.Orders.Add(order);
+                _entities.SaveChanges();
+                double balS = 0;
+                foreach (Order o in _entities.Orders.Where(o => o.ClientId == order.ClientId))
+                {
+                    balS += Convert.ToDouble(o.BalanceS);
+                    balS = Math.Round(balS, 2);
+                }
+                _entities.Clients.Find(order.ClientId).DebtS = String.Format("{0:0.00}", balS);
+
+                _entities.SaveChanges();
+                Order orderForSaving = _entities.Orders.FirstOrDefault(x => x.Id == order.Id);
+                FileSaver.SaveExcelFile(orderForSaving);
+                MessageBox.Show("Заказ добавлен и сохранен в файл", "Добавление заказа", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            this.order.TotalS = String.Format("{0:0.00}", sumS);
-            this.order.ManagerId = curUser.Id;
-            this.order.PaymentS = txtPayment.Text;
-            order.BalanceS = String.Format("{0:0.00}", (Math.Round(Convert.ToDouble(order.TotalS) - Convert.ToDouble(order.PaymentS), 2)));
-            _entities.Orders.Add(order);
-            _entities.SaveChanges();
-            double balS = 0;
-            foreach (Order o in _entities.Orders.Where(o => o.ClientId == order.ClientId))
+            catch
             {
-                balS += Convert.ToDouble(o.BalanceS);
-                balS = Math.Round(balS, 2);
+                MessageBox.Show("Ошибка. Окно будет закрыто.", "Добавление заказа", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            _entities.Clients.Find(order.ClientId).DebtS = String.Format("{0:0.00}", balS);
-
-            _entities.SaveChanges();
-            Order orderForSaving = _entities.Orders.FirstOrDefault(x => x.Id == order.Id);
-            FileSaver.SaveExcelFile(orderForSaving);
-            //FileSaver.SaveExcelFile(order);
-            MessageBox.Show("Заказ добавлен и сохранен в файл", "Добавление заказа", MessageBoxButton.OK, MessageBoxImage.Information);
-
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)

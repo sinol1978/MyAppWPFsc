@@ -1,20 +1,13 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Excel = Microsoft.Office.Interop.Excel;
 
 namespace MyAppWPF
 {
@@ -82,7 +75,11 @@ namespace MyAppWPF
                             _entities.Clients.Find(ClientId).DebtS = balS.ToString();
                             _entities.SaveChanges();
                         }
-                        catch (Exception ex) { }
+                        catch
+                        {
+                            MessageBox.Show("Ошибка. Окно будет закрыто.", "Заказ", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                        }
                     }
                     MessageBox.Show("Заказ удален", "Удаление заказа", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                     this.Close();

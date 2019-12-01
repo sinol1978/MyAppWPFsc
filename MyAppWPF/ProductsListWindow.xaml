@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         WindowStartupLocation="CenterScreen"
         Height="700" Width="750"
-        WindowStyle="None" AllowsTransparency="True" Background="Transparent" MouseDown="Window_MouseDown">
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent">
     <Window.Resources>
         <Style TargetType="DataGridCell">
             <Setter Property="Background" Value="SkyBlue"/>
@@ -103,6 +103,9 @@
                 <Button Grid.Column="0" x:Name="btnAddNewProd" BorderBrush="Transparent" Content="Добавить новый товар" Grid.Row="2" HorizontalAlignment="Left" FontSize="18"
                     FontFamily="Arial" FontStyle="Italic" FontWeight="Bold" Background="Transparent"
                     Click="btnAddNewProd_Click"/>
+                <Button Grid.Column="1" x:Name="btnCreateAllPrices" BorderBrush="Transparent" Content="Все прайсы" Grid.Row="1" HorizontalAlignment="Center" FontSize="18"
+                    FontFamily="Arial" FontStyle="Italic" FontWeight="Bold" Background="Transparent"
+                    Click="btnCreateAllPrices_Click"/>
                 <Button Grid.Column="2" x:Name="btnCreatePrice" BorderBrush="Transparent" Content="Создать прайс" HorizontalAlignment="Right" FontSize="18"
                     FontFamily="Arial" FontStyle="Italic" FontWeight="Bold" Background="Transparent"
                     Click="btnCreatePrice_Click"/>

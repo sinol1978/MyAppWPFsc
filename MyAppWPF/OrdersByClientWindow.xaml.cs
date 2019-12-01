@@ -145,7 +145,7 @@ namespace MyAppWPF
 
         private void dgrodOlines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            return;
+
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

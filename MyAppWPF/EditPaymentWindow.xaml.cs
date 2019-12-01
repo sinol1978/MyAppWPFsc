@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MyAppWPF
 {
@@ -70,7 +62,11 @@ namespace MyAppWPF
                         _entities.Clients.Find(order.ClientId).DebtS = balS.ToString();
                         _entities.SaveChanges();
                     }
-                    catch (Exception ex) { }
+                    catch
+                    {
+                        MessageBox.Show("Произошла ошибка.", "Ошибка базы данных", MessageBoxButton.OK, MessageBoxImage.Hand);
+                        Close();
+                    }
                 }
             }
         }

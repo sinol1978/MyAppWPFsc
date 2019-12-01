@@ -76,7 +76,7 @@
                         <Label Content="Список товаров в заказе:" Margin="5,0,0,0" FontSize="14" FontStyle="Italic" FontWeight="Bold"/>
                         <DataGrid x:Name="dgrodOlines" Height="140" AutoGenerateColumns="False" CanUserAddRows="False" LoadingRow="dgrodOlines_LoadingRow"
                                   Background="Wheat" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                                  IsReadOnly="True">
+                                  IsReadOnly="True" IsEnabled="False">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Товар" Binding="{Binding Path=Products.Name}" Width="*"/>
                                 <DataGridTextColumn Header="Цена" Binding="{Binding Path=Price}"/>

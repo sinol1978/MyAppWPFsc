@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -57,7 +55,11 @@ namespace MyAppWPF
                             _entities.Entry(editClient).State = System.Data.Entity.EntityState.Modified;
                             _entities.SaveChanges();
                         }
-                        catch (Exception ex) { }
+                        catch
+                        {
+                            MessageBox.Show("Ошибка. Окно будет закрыто.", "Список клиентов", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                        }
                     }
                 }
             };
@@ -108,9 +110,5 @@ namespace MyAppWPF
         }
         #endregion
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
-        }
     }
 }

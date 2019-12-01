@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -106,29 +105,6 @@ namespace MyAppWPF
             }
         }
 
-        //private void GetBody(Order order)
-        //{
-        //    body = new StringBuilder()
-        //        .AppendLine("Заказ № " + order.Id)
-        //        .AppendLine("Дата: " + order.OrderDate.ToShortDateString())
-        //        //.AppendLine("Менеджер: " + order.Users.Name + " тел. " + order.Users.Phone1)
-        //        .AppendLine("\n");
-        //    int i = 0;
-        //    if(Convert.ToDouble(Order.TotalS) != 0 || Order.TotalS != String.Empty)
-        //    {
-        //        foreach (OrderLine ol in order.OrderLines.OrderBy(o=>o.Products.Name))
-        //        {
-        //            body.AppendFormat("{0,4}. {1,-50}{2,-5}{3,5} * {4,8} = {5,8}\n", ++i, ol.Products.Name, ol.Products.Unit, ol.Quantity, (Convert.ToDouble(ol.Price)).ToString("N3"), (Convert.ToDouble(ol.Total)).ToString("F"));
-        //        }
-        //        body.AppendLine("----------------------------------------\n");
-        //        body.AppendFormat("Итого: {0}   Оплачено: {1}", (Convert.ToDouble(Order.TotalS)).ToString("F"),
-        //            (Convert.ToDouble(Order.PaymentS)).ToString("F"));
-        //    }
-        //    body.AppendLine("\n");
-        //    body.AppendLine("----------------------------------------\n");
-        //    body.AppendFormat("Общий долг: {0:0.00}", Convert.ToDouble(Order.Clients.DebtS));
-        //}
-
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             txtAnotherMail.IsEnabled = false;
@@ -155,12 +131,6 @@ namespace MyAppWPF
                 MessageBox.Show("Неправильно написан адрес почты.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 txtAnotherMail.Focus();
             }
-
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
         }
     }
 }

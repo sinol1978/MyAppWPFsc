@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -127,6 +128,9 @@ namespace MyAppWPF
 
             _entities.Clients.Find(Order.ClientId).DebtS = String.Format("{0:0.00}", balS);
             _entities.SaveChanges();
+            Order orderForSaving = _entities.Orders.FirstOrDefault(x => x.Id == Order.Id);
+            FileSaver.SaveExcelFile(orderForSaving);
+
             MessageBox.Show("Возврат оформлен", "Возврат", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
@@ -276,6 +280,12 @@ namespace MyAppWPF
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        private void txtQuantity_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex reg = new Regex(@"^([\d,]+)$");
+            if (!reg.IsMatch(e.Text)) e.Handled = true;
         }
     }
 }

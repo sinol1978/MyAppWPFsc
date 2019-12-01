@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MyAppWPF
 {
@@ -76,7 +69,11 @@ namespace MyAppWPF
                         MessageBox.Show(newClient.Name + "\nуспешно добавлен в базу данных.", "Добавление нового клиента", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                         this.Close();
                     }
-                    catch (Exception ex) { }
+                    catch
+                    {
+                        MessageBox.Show("Ошибка. Окно будет закрыто.", "Добавление клиента", MessageBoxButton.OK, MessageBoxImage.Error);
+                        Close();
+                    }
                 }
             }
         }

@@ -79,7 +79,7 @@
                             </DataGrid>
                             <DataGrid x:Name="dgrodOlines" Width="620" Height="530" AutoGenerateColumns="False" Background="Wheat" LoadingRow="dgrodOlines_LoadingRow"
                                   ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                                      MouseDoubleClick="dgrodOlines_MouseDoubleClick" IsReadOnly="True">
+                                      MouseDoubleClick="dgrodOlines_MouseDoubleClick" IsReadOnly="True" IsEnabled="False">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Товар" Binding="{Binding Path=Products.Name}" Width="*"/>
                                     <DataGridTextColumn Header="Цена" Binding="{Binding Path=Price}"/>

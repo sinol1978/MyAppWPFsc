@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32;
-using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -41,13 +40,17 @@ namespace MyAppWPF
             {
                 Product currentProduct = (Product)dgridProducts.SelectedItem;
                 EditProductWindow editProductForm = new EditProductWindow(currentProduct);
-                Effect = new System.Windows.Media.Effects.BlurEffect();
                 editProductForm.ShowDialog();
                 if (editProductForm.DialogResult == true)
                 {
                     MessageBox.Show("Товар успешно отредактирован.", "", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                Effect = null;
+
+                else
+                {
+                    //поставить действие на неизменение товара
+                }
+
             }
             catch
             {
@@ -104,7 +107,6 @@ namespace MyAppWPF
 
         private void btnCreatePrice_Click(object sender, RoutedEventArgs e)
         {
-            Effect = new System.Windows.Media.Effects.BlurEffect();
             try
             {
                 FileSaver.SaveExcelFile(Client);
@@ -113,8 +115,6 @@ namespace MyAppWPF
             {
                 MessageBox.Show("Во время сохранения возникла ошибка.", "Сохранение прайслиста", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            Effect = null;
-
         }
 
         private void SaveToFile(StringBuilder body)
@@ -139,9 +139,15 @@ namespace MyAppWPF
             }
         }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+ //       private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+ //       {
+ //           this.DragMove();
+ //       }
+
+        private void btnCreateAllPrices_Click(object sender, RoutedEventArgs e)
         {
-            this.DragMove();
+            var clients = _entities.Clients.ToList();
+            clients.ForEach(FileSaver.SaveExcelFile);
         }
     }
 }

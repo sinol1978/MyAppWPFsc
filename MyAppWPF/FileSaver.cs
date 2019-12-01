@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Windows;
 
@@ -377,7 +374,7 @@ namespace MyAppWPF
             excelappworkbook.SaveAs(fileName);//Сохраняем книгу
             excelApp.Workbooks[1].Close();
             excelApp.Quit();
-            MessageBox.Show("Прайслист успешно сохранен в файл\n" + fileName, "Сохранение прайслиста", MessageBoxButton.OK, MessageBoxImage.Information);
+            //MessageBox.Show("Прайслист успешно сохранен в файл\n" + fileName, "Сохранение прайслиста", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         public static void DeleteExcelFile(Order order, string filename)
         {

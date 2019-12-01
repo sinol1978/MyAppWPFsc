@@ -75,7 +75,11 @@ namespace MyAppWPF
                             _entities.Entry(editOrder).State = System.Data.Entity.EntityState.Modified;
                             _entities.SaveChanges();
                         }
-                        catch (Exception ex) { }
+                        catch
+                        {
+                            MessageBox.Show("Произошла ошибка.", "Ошибка базы данных", MessageBoxButton.OK, MessageBoxImage.Hand);
+                            Close();
+                        }
                     }
                 };
                 Hide();

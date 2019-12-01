@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("MyAppWPF")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Oleg Sinelnikov")]
 [assembly: AssemblyProduct("MyAppWPF")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]

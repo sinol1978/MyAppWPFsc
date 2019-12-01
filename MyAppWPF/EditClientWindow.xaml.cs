@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MyAppWPF
 {
@@ -68,8 +60,16 @@ namespace MyAppWPF
                         _entities.Entry(editClient).State = System.Data.Entity.EntityState.Modified;
                         _entities.SaveChanges();
                     }
-                    catch (Exception ex) { }
+                    catch
+                    {
+                        MessageBox.Show("Не удалось отредактировать клиента.", "Редактирование клиента", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    }
                 }
+            }
+            else
+            {
+                this.DialogResult = false;
+
             }
         }
         private void btnDelClient_Click(object sender, RoutedEventArgs e)
@@ -99,7 +99,10 @@ namespace MyAppWPF
                     }
                     return;
                 }
-                catch (Exception ex) { }
+                catch{
+                    MessageBox.Show("Ошибка. Окно будет закрыто.", "Удаление клиента", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                }
             }
 
         }

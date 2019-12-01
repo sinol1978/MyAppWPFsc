@@ -46,13 +46,13 @@
                     </StackPanel>
                 </Border>
             </Grid>
-            <StackPanel Orientation="Horizontal" Grid.Row="2">
-                <Button x:Name="btnReg" BorderBrush="Transparent" Content="Регистрация" HorizontalAlignment="Right" FontSize="18"
+            <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
+                <!--<Button x:Name="btnReg" BorderBrush="Transparent" Content="Регистрация" HorizontalAlignment="Right" FontSize="18"
                     FontFamily="Arial" FontStyle="Italic" FontWeight="Bold" Background="Transparent"
-                    Margin="8,0,10,2" Click="btnReg_Click"/>
-                <Button x:Name="btnEnter" BorderBrush="Transparent" Content="Войти" HorizontalAlignment="Right" FontSize="18"
+                    Margin="8,0,10,2" Click="btnReg_Click"/>-->
+                <Button x:Name="btnEnter" BorderBrush="Transparent" Content="Войти" HorizontalAlignment="Center" FontSize="18"
                     FontFamily="Arial" FontStyle="Italic" FontWeight="Bold" Background="Transparent"
-                    Margin="310,0,0,2" Click="btnEnter_Click"/>
+                    Click="btnEnter_Click"/>
             </StackPanel>
         </Grid>
     </Grid>
